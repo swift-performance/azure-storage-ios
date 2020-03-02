@@ -470,6 +470,9 @@
         
         NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
         sessionConfiguration.URLCache = nil;
+        if (@available(iOS 11.0, *)) {
+            sessionConfiguration.multipathServiceType = NSURLSessionMultipathServiceTypeInteractive;
+        }
         sessionConfiguration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
         
         NSTimeInterval clientTimeout = [self remainingTime];
